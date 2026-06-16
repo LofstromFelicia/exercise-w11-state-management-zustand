@@ -1,47 +1,39 @@
-<h1 align="center">
-  <a href="">
-    <img src="/src/assets/state-management.svg" alt="Boiler Plate">
-  </a>
-</h1>
+# 🚀 React Task Manager – State Management with Zustand
 
-# React State Management Task Manager with Zustand Exercise
+A lightweight, high-performance task management application built with React and Vite. This project demonstrates modern global state management using **Zustand** as an alternative to the traditional React Context API or Redux.
 
-For this weeks practice you will Create a simple task manager where tasks are managed using Zustand.
+## 🛠️ Tech Stack & Architecture
 
-## Getting Started with the Project
+* **Framework:** React (Vite)
+* **State Management:** Zustand
+* **Styling:** Vanilla CSS (Custom dark theme)
 
-### Dependency Installation & Startup Development Server:
+### Why Zustand?
+In this project, Zustand acts as a centralized, global store. Unlike the React Context API, Zustand allows components to subscribe to state slices directly without wrapping the application shell in heavy `Providers`, eliminating unnecessary re-renders and keeping the codebase clean and modular.
 
-Once forked and cloned, navigate to the project's root directory and this project uses npm (Node Package Manager) to manage its dependencies.
+---
 
-The command below is a combination of installing dependencies, opening up the project on VS Code and it will run a development server on your terminal.
+## 📦 Project Structure
 
-```bash
-npm i && code . && npm run dev
-```
+The state management architecture is separated from the UI logic following clean folder structures:
 
-### Looking for some hints?
+* `src/store/useTodoStore.jsx` – Houses the global Zustand store, initializing the `todos` array and exporting core mutation functions (`addTodo`, `deleteTodo`, `completeTodo`).
+* `src/components/TodoList.jsx` – The structural component handling form submission and rendering the list by subscribing directly to the store.
+* `src/App.jsx` – The clean, provider-free main application wrapper.
 
-1.  **Zustand Installation**
+---
 
-    - Zustand isn't included in the boiler plate. You'll need to install it using `npm install zustand`.
+## 🚀 Features & Implementation Details
 
-2.  **State Management with Zustand**
-    - When setting up your Zustand store, think of it as a global state container. It should hold all the tasks and provide functions to manipulate them. Follow the naming conventions when you create folders and files. Have a look at the [boilerplate](https://github.com/Technigo/react-zustand-boiler-plate) if you need guidance.
-    - The `create` function from Zustand is your starting point. It accepts a setter function to help you define the state and its updater functions. Some code has been added for you to get you started!
+- **Global Store Setup:** Created a global hook using Zustand's `create` function to manage data mutations safely.
+- **Dynamic Todo Additions:** Generates unique tracking IDs using `Date.now()` to insert new tasks instantly.
+- **State Toggling:** Toggles complete/incomplete styling states cleanly using conditional CSS array mappings.
+- **Direct Filtering:** Removes targeted components natively from the state array on trash-icon trigger.
 
-3.  **Implement the TodoList component**
+---
 
-    - This is the component from which you will access the global state. Create a form that will allow you to add your task to the list. Display the added tasks in a list, the user should be able to delete and complete each task.
+## 🛠️ Getting Started
 
-4.  **Integrating Components**
-
-    - In your main `App.jsx`, integrate the TodoList component.
-
-5.  **Testing**
-
-    - Before pushing to GitHub, test your application thoroughly. Add tasks, remove them, and toggle the theme. Ensure everything works seamlessly.
-
-6.  **Committing and Pushing**
-    - Use `git add .` to stage your changes, followed by `git commit -m "Your commit message here"` to commit them.
-    - Push your changes to the GitHub repository using `git push origin main`.
+1. **Install dependencies:**
+   ```bash
+   npm install
